@@ -13,9 +13,15 @@ Research data with different medical research method.
 Voice module to insert data and research assistant.
 
 Technology:
+
 Back-End: 
+
 	-->Language: Python
+	
 	-->Platform: Web
+	
 	-->API: Django-Rest
+	
 	-->ORM: DJango ORM
+	
 
