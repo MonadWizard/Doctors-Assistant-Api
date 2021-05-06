@@ -25,6 +25,25 @@ class Patient(models.Model):
         return self.name
 
 
+class PatientInfos(models.Model):
+    # Info Types
+    CHOICES = (
+        ('L', 'Lab'),
+        ('S', 'Surgery'),
+        ('O', 'Other'),
+    )
+
+    type = models.CharField(max_length=3, choices=CHOICES, default=CHOICES.index(1))
+    referred_by = models.CharField(max_length=50, blank=True)
+    specimen = models.CharField(max_length=150, blank=True)
+    investigation = models.CharField(max_length=250, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    finishing_date = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.type
+
+
 class MediaImage(models.Model):
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
 
@@ -38,4 +57,18 @@ class MediaDocument(models.Model):
 
 
 class Media(models.Model):
-    pass
+    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
+    image = models.ForeignKey(MediaImage, on_delete=models.CASCADE)
+    video = models.ForeignKey(MediaVideo, on_delete=models.CASCADE)
+    document = models.ForeignKey(MediaVideo, on_delete=models.CASCADE)
+
+
+class Assign(models.Model):
+    """
+    Assign Lab or Surgery
+    """
+    patient_id = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.patient_info_id.type + " for " + self.patient_id.name
