@@ -16,12 +16,14 @@ Technology:
 
 Back-End: 
 
-	-->Language: Python
+	Language: Python
 	
-	-->Platform: Web
+	Platform: Web
 	
-	-->API: Django-Rest
+	Framework: Django
 	
-	-->ORM: DJango ORM
+	API: Django-Rest
+	
+	ORM: DJango ORM
 	
 
