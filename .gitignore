@@ -3,4 +3,6 @@ venv
 migrations
 .git
 __pycache__
+
 *.env
+*.sqlite3
