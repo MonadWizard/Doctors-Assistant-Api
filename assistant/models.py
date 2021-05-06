@@ -13,7 +13,7 @@ class Patient(models.Model):
     )
     name = models.CharField(max_length=100, blank=True)
     age = models.PositiveSmallIntegerField(blank=True, null=True)
-    sex = models.CharField(max_length=3, choices=CHOICES, default=CHOICES.index(1))
+    sex = models.CharField(max_length=3, choices=CHOICES, default="M")
     phone = models.CharField(max_length=25, blank=True, null=True)
     address = models.CharField(max_length=200, blank=True)
     diagnosis = models.CharField(max_length=200, blank=True)
@@ -33,7 +33,7 @@ class PatientInfos(models.Model):
         ('O', 'Other'),
     )
 
-    type = models.CharField(max_length=3, choices=CHOICES, default=CHOICES.index(1))
+    type = models.CharField(max_length=3, choices=CHOICES, default="L")
     referred_by = models.CharField(max_length=50, blank=True)
     specimen = models.CharField(max_length=150, blank=True)
     investigation = models.CharField(max_length=250, blank=True)
