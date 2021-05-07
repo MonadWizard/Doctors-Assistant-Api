@@ -1,6 +1,6 @@
 from django.db import models
 
-
+from account.models import User
 # Create your models here.
 
 
@@ -11,6 +11,7 @@ class Patient(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     )
+
     name = models.CharField(max_length=100, blank=True)
     age = models.PositiveSmallIntegerField(blank=True, null=True)
     sex = models.CharField(max_length=3, choices=CHOICES, default="M")
@@ -18,6 +19,7 @@ class Patient(models.Model):
     address = models.CharField(max_length=200, blank=True)
     diagnosis = models.CharField(max_length=200, blank=True)
     prof_surgeon_consultant = models.CharField(max_length=200, blank=True)
+    assign_doctor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     date_of_admission = models.DateTimeField(auto_now_add=True)
     date_of_discharge = models.DateTimeField(null=True)
 

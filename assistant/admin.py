@@ -26,6 +26,7 @@ class PatientAdmin(admin.ModelAdmin):
         "sex",
         "phone",
         "age",
+        "assign_doctor",
         "date_of_admission",
         "date_of_discharge",
         "address",
@@ -33,12 +34,19 @@ class PatientAdmin(admin.ModelAdmin):
     ]
     readonly_fields = [
         "date_of_admission",
+        "assign_doctor",
+
     ]
     search_fields = [
         'name',
         'phone',
         'diagnosis',
     ]
+
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'assign_doctor', None) is None:
+            obj.author = request.user
+        obj.save()
 
 
 admin.site.register(Patient, PatientAdmin)
