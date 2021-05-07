@@ -21,7 +21,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import generics
 
 from .models import User, PhoneOtp, DoctorsProfile, UserAddress
-from .serializer import (
+from .serializers import (
     UserSerializer,
     DoctorRegisterSerializer,
     PhoneValidateSerializer,

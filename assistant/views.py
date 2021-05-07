@@ -1,3 +1,52 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from account.permissions import IsDoctor
+from . import serializers
+from . import models
 
-# Create your views here.
+
+class PatientViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.Patient.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
+
+
+class PatientInfosViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.PatientInfos.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
+
+
+class MediaImageViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.MediaImage.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
+
+
+class MediaVideoViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.MediaVideo.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
+
+
+class MediaDocumentViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.MediaDocument.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
+
+
+class AssignViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Patient class"""
+
+    queryset = models.Assign.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctor]
