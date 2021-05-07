@@ -7,15 +7,15 @@ class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Patient
         fields = [
+            "name",
             "diagnosis",
-            "date_of_discharge",
-            "phone",
-            "date_of_admission",
+            "sex",
             "age",
+            "phone",
             "address",
             "prof_surgeon_consultant",
-            "name",
-            "sex",
+            "date_of_discharge",
+            "date_of_admission",
         ]
 
 

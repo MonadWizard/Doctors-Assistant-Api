@@ -12,11 +12,11 @@ from .views import (
 
 router = DefaultRouter()
 router.register('patient', PatientViewSet)  # for patient - post and get
-router.register('patient/info', PatientInfosViewSet)  # for patient - post and get
-router.register('patient/assign', AssignViewSet)  # for patient - post and get
-router.register('patient/info/image', MediaImageViewSet)  # for patient - post and get
-router.register('patient/info/video', MediaVideoViewSet)  # for patient - post and get
-router.register('patient/info/document', MediaDocumentViewSet)  # for patient - post and get
+router.register('info', PatientInfosViewSet)  # for patient - post and get
+router.register('assign', AssignViewSet)  # for patient - post and get
+router.register('image', MediaImageViewSet)  # for patient - post and get
+router.register('video', MediaVideoViewSet)  # for patient - post and get
+router.register('document', MediaDocumentViewSet)  # for patient - post and get
 
 urlpatterns = [
     path('api/', include(router.urls)),

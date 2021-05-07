@@ -34,6 +34,7 @@ class PatientInfos(models.Model):
     )
 
     type = models.CharField(max_length=3, choices=CHOICES, default="L")
+    type_name = models.CharField(max_length=100, blank=True)
     referred_by = models.CharField(max_length=50, blank=True)
     specimen = models.CharField(max_length=150, blank=True)
     investigation = models.CharField(max_length=250, blank=True)
@@ -44,7 +45,7 @@ class PatientInfos(models.Model):
         verbose_name_plural = "PatientInfos"
 
     def __str__(self):
-        return self.type
+        return self.type_name
 
 
 class Assign(models.Model):
@@ -56,7 +57,7 @@ class Assign(models.Model):
     patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.patient_info_id.type + " for " + self.patient_id.name
+        return self.patient_info_id.type_name + " for " + self.patient_id.name
 
 
 class MediaImage(models.Model):

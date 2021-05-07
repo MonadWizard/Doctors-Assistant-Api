@@ -119,7 +119,7 @@ class DoctorEmailRegisterSerializer(serializers.ModelSerializer):
         #                                 password=make_password(validated_data.pop('password')), seller=True)
 
         user = User.objects.create_user(username=validated_data['email'], email=validated_data['email'],
-                                        password=(validated_data['password']), seller=True,
+                                        password=(validated_data['password']), doctors=True,
                                         is_active=False)
         user.save()
 
