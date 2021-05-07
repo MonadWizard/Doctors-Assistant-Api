@@ -47,21 +47,6 @@ class PatientInfos(models.Model):
         return self.type
 
 
-class MediaImage(models.Model):
-    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='photos/%Y/%m/%d/')
-
-
-class MediaVideo(models.Model):
-    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
-    video = models.FileField(upload_to='video/%Y/%m/%d/')
-
-
-class MediaDocument(models.Model):
-    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
-    document = models.FileField(upload_to='document/%Y/%m/%d/')
-
-
 class Assign(models.Model):
     """
     Assign Lab or Surgery
@@ -71,3 +56,18 @@ class Assign(models.Model):
 
     def __str__(self):
         return self.patient_info_id.type + " for " + self.patient_id.name
+
+
+class MediaImage(models.Model):
+    patient_info_id_from_assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='photos/%Y/%m/%d/')
+
+
+class MediaVideo(models.Model):
+    patient_info_id_from_assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    video = models.FileField(upload_to='video/%Y/%m/%d/')
+
+
+class MediaDocument(models.Model):
+    patient_info_id_from_assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    document = models.FileField(upload_to='document/%Y/%m/%d/')

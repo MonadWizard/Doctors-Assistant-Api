@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 from datetime import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,13 +37,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
 
+
     # Personal App
 
-    'account',    # user, log, reg
+    'account',  # user, log, reg
     'assistant',  # Patient, Assign Lab and Surgery, Patient_info, Media Handle
-    'research',   # Research
+    'research',  # Research
 
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'dva.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
