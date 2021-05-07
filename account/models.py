@@ -81,7 +81,7 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
     #     AdminProfile.objects.get_or_create(user=instance)
     if created:
         UserAddress.objects.get_or_create(user=instance)
-        if instance.seller:
+        if instance.doctors:
             DoctorsProfile.objects.get_or_create(user=instance)
 
 
