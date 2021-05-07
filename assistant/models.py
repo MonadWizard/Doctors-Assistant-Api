@@ -40,27 +40,26 @@ class PatientInfos(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     finishing_date = models.DateTimeField(null=True)
 
+    class Meta:
+        verbose_name_plural = "PatientInfos"
+
     def __str__(self):
         return self.type
 
 
 class MediaImage(models.Model):
+    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
 
 
 class MediaVideo(models.Model):
+    patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
     video = models.FileField(upload_to='video/%Y/%m/%d/')
 
 
 class MediaDocument(models.Model):
-    video = models.FileField(upload_to='document/%Y/%m/%d/')
-
-
-class Media(models.Model):
     patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
-    image = models.ForeignKey(MediaImage, on_delete=models.CASCADE)
-    video = models.ForeignKey(MediaVideo, on_delete=models.CASCADE)
-    document = models.ForeignKey(MediaVideo, on_delete=models.CASCADE)
+    video = models.FileField(upload_to='document/%Y/%m/%d/')
 
 
 class Assign(models.Model):
