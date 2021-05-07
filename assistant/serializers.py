@@ -51,15 +51,15 @@ class MediaDocumentSerializer(serializers.ModelSerializer):
 
 
 class AssignSerializer(serializers.ModelSerializer):
-    patients = PatientSerializer(read_only=True)
-    patient_id = serializers.PrimaryKeyRelatedField(
-        queryset=models.Patient.objects.all(), source='patients', write_only=True)
-
-    patient_infos = PatientInfosSerializer(read_only=True)
-    patient_info_id = serializers.PrimaryKeyRelatedField(
-        queryset=models.PatientInfos.objects.all(), source='patient_infos', write_only=True)
+    # patients = PatientSerializer(read_only=True)
+    # patient_id = serializers.PrimaryKeyRelatedField(
+    #     queryset=models.Patient.objects.all(), source='patients', write_only=True)
+    #
+    # patient_infos = PatientInfosSerializer(read_only=True)
+    # patient_info_id = serializers.PrimaryKeyRelatedField(
+    #     queryset=models.PatientInfos.objects.all(), source='patient_infos', write_only=True)
 
     class Meta:
         model = models.Assign
         fields = '__all__'
-        # fields = ['id', 'patient_id', 'patient_info_id']
+        # fields = ['id', 'patients', 'patient_id', 'patient_infos', 'patient_info_id']

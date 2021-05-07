@@ -34,7 +34,6 @@ class PatientAdmin(admin.ModelAdmin):
     ]
     readonly_fields = [
         "date_of_admission",
-        "assign_doctor",
 
     ]
     search_fields = [
