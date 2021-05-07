@@ -1,0 +1,9 @@
+{% autoescape off %}
+Email: {{ user.username }},
+
+You have requested to change your email id.
+Please click the following link to verify your account.
+
+{{token}}
+{% endautoescape %}
+

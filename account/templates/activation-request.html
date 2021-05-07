@@ -1,0 +1,8 @@
+{% autoescape off %}
+Email: {{ user.username }},
+
+Please click the following link to confirm your registration:
+
+{{token}}
+{% endautoescape %}
+
