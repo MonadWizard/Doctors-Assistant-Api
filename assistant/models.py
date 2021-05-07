@@ -59,7 +59,7 @@ class MediaVideo(models.Model):
 
 class MediaDocument(models.Model):
     patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
-    video = models.FileField(upload_to='document/%Y/%m/%d/')
+    document = models.FileField(upload_to='document/%Y/%m/%d/')
 
 
 class Assign(models.Model):
