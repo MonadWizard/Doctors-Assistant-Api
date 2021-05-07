@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'research',  # Research
 
 ]
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

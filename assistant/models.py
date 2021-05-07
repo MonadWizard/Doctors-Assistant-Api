@@ -51,6 +51,7 @@ class Assign(models.Model):
     """
     Assign Lab or Surgery
     """
+
     patient_id = models.ForeignKey(Patient, on_delete=models.CASCADE)
     patient_info_id = models.ForeignKey(PatientInfos, on_delete=models.CASCADE)
 
