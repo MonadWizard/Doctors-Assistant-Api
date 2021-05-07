@@ -1,5 +1,3 @@
-from abc import ABC
-
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.db.models import Q
@@ -34,7 +32,7 @@ class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
         }
 
 
-class PhoneValidateSerializer(serializers.Serializer, ABC):
+class PhoneValidateSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=100)
 
 
@@ -146,7 +144,7 @@ class DoctorEmailRegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer, ABC):
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     """ TokenObtainPairSerializer is customized to allow authorization by phone/email """
 
     def validate(self, attrs):
@@ -167,7 +165,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer, ABC):
         return data
 
 
-class VerificationSerializer(serializers.Serializer, ABC):
+class VerificationSerializer(serializers.Serializer):
     user_id = serializers.IntegerField()
     identity_image = serializers.ImageField()
 
@@ -243,7 +241,7 @@ class PhoneUpdateSerializer(serializers.ModelSerializer):
             return instance
 
 
-class PasswordUpdateSerializer(serializers.Serializer, ABC):
+class PasswordUpdateSerializer(serializers.Serializer):
     current_password = serializers.CharField()
     new_password = serializers.CharField()
     confirm_password = serializers.CharField()

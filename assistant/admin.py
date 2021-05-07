@@ -21,18 +21,23 @@ class PatientAdminForm(forms.ModelForm):
 class PatientAdmin(admin.ModelAdmin):
     form = PatientAdminForm
     list_display = [
+        "name",
         "diagnosis",
-        "date_of_discharge",
+        "sex",
         "phone",
-        "date_of_admission",
         "age",
+        "date_of_admission",
+        "date_of_discharge",
         "address",
         "prof_surgeon_consultant",
-        "name",
-        "sex",
     ]
     readonly_fields = [
         "date_of_admission",
+    ]
+    search_fields = [
+        'name',
+        'phone',
+        'diagnosis',
     ]
 
 
@@ -47,8 +52,16 @@ class PatientInfosAdminForm(forms.ModelForm):
 
 class PatientInfosAdmin(admin.ModelAdmin):
     form = PatientAdminForm
-    list_display = '__all__'
+    list_display = [
+        'type',
+        'referred_by',
+        'specimen',
+        'investigation',
+        'created_date',
+        'finishing_date',
+    ]
     readonly_fields = [
+        'created_date',
 
     ]
 
