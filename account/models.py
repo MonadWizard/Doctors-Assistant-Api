@@ -38,7 +38,7 @@ class UserAddress(models.Model):
 
     def __str__(self):
         if self.user:
-            return "{}".format((self.user.username) + "-" + str(self.pk))
+            return "{}".format(self.user.username + "-" + str(self.pk))
         else:
             return "parcel address - " + str(self.pk)
 
@@ -52,7 +52,7 @@ class PhoneOtp(models.Model):
     validated = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}".format((self.phone) + "-" + str(self.otp))
+        return "{}".format(self.phone + "-" + str(self.otp))
 
 
 class DoctorsProfile(models.Model):
